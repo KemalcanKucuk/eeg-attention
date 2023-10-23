@@ -1,0 +1,182 @@
+('spc_cnt', 'spc_roff'): K-NN train acc: 0.73 test acc: 0.58
+('spc_cnt', 'spc_roff'): SVM train acc: 0.64 test acc: 0.65
+('spc_cnt', 'slope'): K-NN train acc: 0.77 test acc: 0.69
+('spc_cnt', 'slope'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'mfcc_0'): K-NN train acc: 0.77 test acc: 0.67
+('spc_cnt', 'mfcc_0'): SVM train acc: 0.71 test acc: 0.72
+('spc_cnt', 'mfcc_1'): K-NN train acc: 0.72 test acc: 0.58
+('spc_cnt', 'mfcc_1'): SVM train acc: 0.62 test acc: 0.63
+('spc_cnt', 'mfcc_2'): K-NN train acc: 0.72 test acc: 0.56
+('spc_cnt', 'mfcc_2'): SVM train acc: 0.63 test acc: 0.64
+('spc_cnt', 'mfcc_3'): K-NN train acc: 0.73 test acc: 0.60
+('spc_cnt', 'mfcc_3'): SVM train acc: 0.63 test acc: 0.64
+('spc_roff', 'slope'): K-NN train acc: 0.78 test acc: 0.68
+('spc_roff', 'slope'): SVM train acc: 0.71 test acc: 0.72
+('spc_roff', 'mfcc_0'): K-NN train acc: 0.77 test acc: 0.69
+('spc_roff', 'mfcc_0'): SVM train acc: 0.71 test acc: 0.72
+('spc_roff', 'mfcc_1'): K-NN train acc: 0.73 test acc: 0.60
+('spc_roff', 'mfcc_1'): SVM train acc: 0.63 test acc: 0.65
+('spc_roff', 'mfcc_2'): K-NN train acc: 0.73 test acc: 0.58
+('spc_roff', 'mfcc_2'): SVM train acc: 0.63 test acc: 0.64
+('spc_roff', 'mfcc_3'): K-NN train acc: 0.73 test acc: 0.59
+('spc_roff', 'mfcc_3'): SVM train acc: 0.64 test acc: 0.64
+('slope', 'mfcc_0'): K-NN train acc: 0.77 test acc: 0.68
+('slope', 'mfcc_0'): SVM train acc: 0.72 test acc: 0.72
+('slope', 'mfcc_1'): K-NN train acc: 0.77 test acc: 0.67
+('slope', 'mfcc_1'): SVM train acc: 0.71 test acc: 0.72
+('slope', 'mfcc_2'): K-NN train acc: 0.77 test acc: 0.67
+('slope', 'mfcc_2'): SVM train acc: 0.71 test acc: 0.72
+('slope', 'mfcc_3'): K-NN train acc: 0.76 test acc: 0.67
+('slope', 'mfcc_3'): SVM train acc: 0.70 test acc: 0.71
+('mfcc_0', 'mfcc_1'): K-NN train acc: 0.74 test acc: 0.62
+('mfcc_0', 'mfcc_1'): SVM train acc: 0.67 test acc: 0.69
+('mfcc_0', 'mfcc_2'): K-NN train acc: 0.73 test acc: 0.60
+('mfcc_0', 'mfcc_2'): SVM train acc: 0.64 test acc: 0.65
+('mfcc_0', 'mfcc_3'): K-NN train acc: 0.72 test acc: 0.57
+('mfcc_0', 'mfcc_3'): SVM train acc: 0.62 test acc: 0.63
+('mfcc_1', 'mfcc_2'): K-NN train acc: 0.72 test acc: 0.57
+('mfcc_1', 'mfcc_2'): SVM train acc: 0.63 test acc: 0.65
+('mfcc_1', 'mfcc_3'): K-NN train acc: 0.71 test acc: 0.55
+('mfcc_1', 'mfcc_3'): SVM train acc: 0.61 test acc: 0.62
+('mfcc_2', 'mfcc_3'): K-NN train acc: 0.71 test acc: 0.55
+('mfcc_2', 'mfcc_3'): SVM train acc: 0.61 test acc: 0.60
+('spc_cnt', 'spc_roff', 'slope'): K-NN train acc: 0.78 test acc: 0.69
+('spc_cnt', 'spc_roff', 'slope'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'spc_roff', 'mfcc_0'): K-NN train acc: 0.78 test acc: 0.69
+('spc_cnt', 'spc_roff', 'mfcc_0'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'spc_roff', 'mfcc_1'): K-NN train acc: 0.74 test acc: 0.62
+('spc_cnt', 'spc_roff', 'mfcc_1'): SVM train acc: 0.65 test acc: 0.65
+('spc_cnt', 'spc_roff', 'mfcc_2'): K-NN train acc: 0.73 test acc: 0.61
+('spc_cnt', 'spc_roff', 'mfcc_2'): SVM train acc: 0.64 test acc: 0.66
+('spc_cnt', 'spc_roff', 'mfcc_3'): K-NN train acc: 0.73 test acc: 0.60
+('spc_cnt', 'spc_roff', 'mfcc_3'): SVM train acc: 0.64 test acc: 0.65
+('spc_cnt', 'slope', 'mfcc_0'): K-NN train acc: 0.77 test acc: 0.68
+('spc_cnt', 'slope', 'mfcc_0'): SVM train acc: 0.72 test acc: 0.72
+('spc_cnt', 'slope', 'mfcc_1'): K-NN train acc: 0.78 test acc: 0.69
+('spc_cnt', 'slope', 'mfcc_1'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'slope', 'mfcc_2'): K-NN train acc: 0.77 test acc: 0.69
+('spc_cnt', 'slope', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.72
+('spc_cnt', 'slope', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.69
+('spc_cnt', 'slope', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.72
+('spc_cnt', 'mfcc_0', 'mfcc_1'): K-NN train acc: 0.77 test acc: 0.69
+('spc_cnt', 'mfcc_0', 'mfcc_1'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'mfcc_0', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.68
+('spc_cnt', 'mfcc_0', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.72
+('spc_cnt', 'mfcc_0', 'mfcc_3'): K-NN train acc: 0.77 test acc: 0.69
+('spc_cnt', 'mfcc_0', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.72
+('spc_cnt', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.72 test acc: 0.61
+('spc_cnt', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.63 test acc: 0.65
+('spc_cnt', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.73 test acc: 0.60
+('spc_cnt', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.64 test acc: 0.65
+('spc_cnt', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.73 test acc: 0.61
+('spc_cnt', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.64 test acc: 0.65
+('spc_roff', 'slope', 'mfcc_0'): K-NN train acc: 0.78 test acc: 0.70
+('spc_roff', 'slope', 'mfcc_0'): SVM train acc: 0.72 test acc: 0.73
+('spc_roff', 'slope', 'mfcc_1'): K-NN train acc: 0.77 test acc: 0.68
+('spc_roff', 'slope', 'mfcc_1'): SVM train acc: 0.71 test acc: 0.72
+('spc_roff', 'slope', 'mfcc_2'): K-NN train acc: 0.77 test acc: 0.68
+('spc_roff', 'slope', 'mfcc_2'): SVM train acc: 0.71 test acc: 0.72
+('spc_roff', 'slope', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.70
+('spc_roff', 'slope', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.72
+('spc_roff', 'mfcc_0', 'mfcc_1'): K-NN train acc: 0.77 test acc: 0.69
+('spc_roff', 'mfcc_0', 'mfcc_1'): SVM train acc: 0.72 test acc: 0.73
+('spc_roff', 'mfcc_0', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.69
+('spc_roff', 'mfcc_0', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.72
+('spc_roff', 'mfcc_0', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.71
+('spc_roff', 'mfcc_0', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.73
+('spc_roff', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.73 test acc: 0.61
+('spc_roff', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.64 test acc: 0.65
+('spc_roff', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.73 test acc: 0.60
+('spc_roff', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.64 test acc: 0.65
+('spc_roff', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.73 test acc: 0.60
+('spc_roff', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.65 test acc: 0.66
+('slope', 'mfcc_0', 'mfcc_1'): K-NN train acc: 0.77 test acc: 0.68
+('slope', 'mfcc_0', 'mfcc_1'): SVM train acc: 0.72 test acc: 0.74
+('slope', 'mfcc_0', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.68
+('slope', 'mfcc_0', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.72
+('slope', 'mfcc_0', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.69
+('slope', 'mfcc_0', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.72
+('slope', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.69
+('slope', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.72
+('slope', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.77 test acc: 0.69
+('slope', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.71 test acc: 0.73
+('slope', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.77 test acc: 0.69
+('slope', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.71 test acc: 0.72
+('mfcc_0', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.68
+('mfcc_0', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.73
+('mfcc_0', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.76 test acc: 0.66
+('mfcc_0', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.69 test acc: 0.71
+('mfcc_0', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.74 test acc: 0.61
+('mfcc_0', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.66 test acc: 0.65
+('mfcc_1', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.73 test acc: 0.61
+('mfcc_1', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.64 test acc: 0.66
+('spc_cnt', 'spc_roff', 'slope', 'mfcc_0'): K-NN train acc: 0.78 test acc: 0.69
+('spc_cnt', 'spc_roff', 'slope', 'mfcc_0'): SVM train acc: 0.73 test acc: 0.74
+('spc_cnt', 'spc_roff', 'slope', 'mfcc_1'): K-NN train acc: 0.79 test acc: 0.71
+('spc_cnt', 'spc_roff', 'slope', 'mfcc_1'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'spc_roff', 'slope', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.70
+('spc_cnt', 'spc_roff', 'slope', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'spc_roff', 'slope', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.69
+('spc_cnt', 'spc_roff', 'slope', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'spc_roff', 'mfcc_0', 'mfcc_1'): K-NN train acc: 0.79 test acc: 0.70
+('spc_cnt', 'spc_roff', 'mfcc_0', 'mfcc_1'): SVM train acc: 0.72 test acc: 0.74
+('spc_cnt', 'spc_roff', 'mfcc_0', 'mfcc_2'): K-NN train acc: 0.79 test acc: 0.70
+('spc_cnt', 'spc_roff', 'mfcc_0', 'mfcc_2'): SVM train acc: 0.73 test acc: 0.73
+('spc_cnt', 'spc_roff', 'mfcc_0', 'mfcc_3'): K-NN train acc: 0.79 test acc: 0.70
+('spc_cnt', 'spc_roff', 'mfcc_0', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'spc_roff', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.73 test acc: 0.62
+('spc_cnt', 'spc_roff', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.65 test acc: 0.66
+('spc_cnt', 'spc_roff', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.74 test acc: 0.61
+('spc_cnt', 'spc_roff', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.65 test acc: 0.65
+('spc_cnt', 'spc_roff', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.74 test acc: 0.62
+('spc_cnt', 'spc_roff', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.65 test acc: 0.66
+('spc_cnt', 'slope', 'mfcc_0', 'mfcc_1'): K-NN train acc: 0.78 test acc: 0.70
+('spc_cnt', 'slope', 'mfcc_0', 'mfcc_1'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'slope', 'mfcc_0', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.68
+('spc_cnt', 'slope', 'mfcc_0', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.72
+('spc_cnt', 'slope', 'mfcc_0', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.69
+('spc_cnt', 'slope', 'mfcc_0', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'slope', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.70
+('spc_cnt', 'slope', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'slope', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.70
+('spc_cnt', 'slope', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.73
+('spc_cnt', 'slope', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.69
+('spc_cnt', 'slope', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.72
+('spc_cnt', 'mfcc_0', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.69
+('spc_cnt', 'mfcc_0', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.73 test acc: 0.73
+('spc_cnt', 'mfcc_0', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.71
+('spc_cnt', 'mfcc_0', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.73 test acc: 0.74
+('spc_cnt', 'mfcc_0', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.79 test acc: 0.71
+('spc_cnt', 'mfcc_0', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.72
+('spc_cnt', 'mfcc_1', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.74 test acc: 0.60
+('spc_cnt', 'mfcc_1', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.65 test acc: 0.66
+('spc_roff', 'slope', 'mfcc_0', 'mfcc_1'): K-NN train acc: 0.78 test acc: 0.70
+('spc_roff', 'slope', 'mfcc_0', 'mfcc_1'): SVM train acc: 0.73 test acc: 0.74
+('spc_roff', 'slope', 'mfcc_0', 'mfcc_2'): K-NN train acc: 0.79 test acc: 0.71
+('spc_roff', 'slope', 'mfcc_0', 'mfcc_2'): SVM train acc: 0.73 test acc: 0.73
+('spc_roff', 'slope', 'mfcc_0', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.71
+('spc_roff', 'slope', 'mfcc_0', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.74
+('spc_roff', 'slope', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.70
+('spc_roff', 'slope', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.73
+('spc_roff', 'slope', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.68
+('spc_roff', 'slope', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.73
+('spc_roff', 'slope', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.70
+('spc_roff', 'slope', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.72
+('spc_roff', 'mfcc_0', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.69
+('spc_roff', 'mfcc_0', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.72 test acc: 0.73
+('spc_roff', 'mfcc_0', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.71
+('spc_roff', 'mfcc_0', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.73 test acc: 0.74
+('spc_roff', 'mfcc_0', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.79 test acc: 0.69
+('spc_roff', 'mfcc_0', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.73 test acc: 0.73
+('spc_roff', 'mfcc_1', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.74 test acc: 0.61
+('spc_roff', 'mfcc_1', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.65 test acc: 0.66
+('slope', 'mfcc_0', 'mfcc_1', 'mfcc_2'): K-NN train acc: 0.78 test acc: 0.69
+('slope', 'mfcc_0', 'mfcc_1', 'mfcc_2'): SVM train acc: 0.73 test acc: 0.73
+('slope', 'mfcc_0', 'mfcc_1', 'mfcc_3'): K-NN train acc: 0.79 test acc: 0.69
+('slope', 'mfcc_0', 'mfcc_1', 'mfcc_3'): SVM train acc: 0.73 test acc: 0.74
+('slope', 'mfcc_0', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.79 test acc: 0.70
+('slope', 'mfcc_0', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.73 test acc: 0.73
+('slope', 'mfcc_1', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.69
+('slope', 'mfcc_1', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.73
+('mfcc_0', 'mfcc_1', 'mfcc_2', 'mfcc_3'): K-NN train acc: 0.78 test acc: 0.70
+('mfcc_0', 'mfcc_1', 'mfcc_2', 'mfcc_3'): SVM train acc: 0.72 test acc: 0.73

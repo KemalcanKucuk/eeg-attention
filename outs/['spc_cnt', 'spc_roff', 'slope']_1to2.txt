@@ -1,0 +1,6 @@
+('spc_cnt',): K-NN train acc: 0.72 test acc: 0.57
+('spc_cnt',): SVM train acc: 0.62 test acc: 0.63
+('spc_roff',): K-NN train acc: 0.61 test acc: 0.59
+('spc_roff',): SVM train acc: 0.64 test acc: 0.64
+('slope',): K-NN train acc: 0.76 test acc: 0.66
+('slope',): SVM train acc: 0.70 test acc: 0.71
