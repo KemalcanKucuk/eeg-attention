@@ -18,6 +18,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
+import itertools
 
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
@@ -61,9 +62,12 @@ def data_preparation(selected_channels, selected_labels, feature_subset, split_s
 
     return [X_train, X_test, y_train, y_test]
 
-def model_training(data, model_family, display_labels, verbose = True, stats=False, cm=False):
+def model_training(data, model_family, verbose = True, stats=False, cm=False):
 
   X_train, X_test, y_train, y_test = data
+  # TODO: burada bi seyleri karistirdim bu kisim bi kontrol edilsin
+  #display_labels = ['drowsy' if label == 1 else 'alert' for label in labels['label'].unique()]
+  display_labels = ['drowsy', 'alert']
   if model_family == 'K-NN':
     model = KNeighborsClassifier()
   elif model_family == 'DTC':
@@ -118,10 +122,19 @@ def model_training(data, model_family, display_labels, verbose = True, stats=Fal
   
   return [training_acc, test_acc]
 
+def downsampling(df, sr=0.5):
+    '''
+    Returns the downsampled version of a dataframe, conserving the class ratios.
+    '''
+    ds_df = pd.DataFrame()
+    row_count = len(df.index)
+    ds_sample_n = row_count * sr
+    s0 = df.label[df.label.eq(0)].sample(int(ds_sample_n/2)).index
+    s1 = df.label[df.label.eq(1)].sample(int(ds_sample_n/2)).index 
+    ds_df = df.loc[s0.union(s1)]
+    return ds_df
 
-  import itertools
-
-def feature_combination(feature_subset, stop_feature, min_n = 1, max_n = 5, training=False, pvalue=False):
+def feature_combination(feature_subset, selected_channels, selected_labels, stop_feature, min_n = 1, max_n = 5, training=False, pvalue=False):
     '''
     Go through a feature subset and calculate the combinations of different features on the subsets.
     '''
@@ -134,7 +147,7 @@ def feature_combination(feature_subset, stop_feature, min_n = 1, max_n = 5, trai
                 data = data_preparation(selected_channels=selected_channels, selected_labels=selected_labels, feature_subset=comb)
                 # parametrize the models
                 for model in ['K-NN', 'SVM', 'DTC']:
-                    train_acc, test_acc = model_training(data, model, display_labels, verbose=False, stats=False, cm=False)
+                    train_acc, test_acc = model_training(data, model, verbose=False, stats=False, cm=False)
                     # TODO: improve the readability of the file by either modifying the string or changing the filetype entirely
                     file.writelines(f"{comb}: {model} train acc: {train_acc:.2f} test acc: {test_acc:.2f}\n")
             # we can also add a thresholding section to see if the pvalue or variance value changes
@@ -183,7 +196,7 @@ def p_value_slicing(p_values, stop_feature):
     '''
     
     stop_index = 0
-    for i in range(len(p_all)):
+    for i in range(len(p_values)):
         if p_values[i] == stop_feature:
             stop_index = i
 
