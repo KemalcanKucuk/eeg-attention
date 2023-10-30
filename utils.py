@@ -22,6 +22,31 @@ import itertools
 
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
+def data_loader(path, channel_list, ds = False, ds_rate = 1):
+  '''
+  Load the data and apply the necessary transformations, downsample if necessary.
+  '''
+
+  # load the feature dataset as a dataframe
+  df = pd.read_csv(path, float_precision='round_trip')
+  
+  if ds:
+    df = downsampling(df, sr=ds_rate)
+
+  # we might delete this condition but i'll leave it be
+  # in case we try it on multiple datasets
+  # if csv_path == 'eeg_features.csv':
+
+  df = df.drop('Unnamed: 0', axis=1)
+  # split the dataset to features and labels
+  features = df.drop('label', axis=1)
+  labels = df.iloc[:,-1:]
+
+  selected_channels, selected_labels = channel_selection(features=features, labels=labels, channel_list=channel_list)
+  # TODO: might add a test argument to directly return (features,labels)
+
+
+  return (selected_channels, selected_labels)
 
 def channel_selection(features, labels, channel_list):
     '''
@@ -48,7 +73,7 @@ def data_preparation(selected_channels, selected_labels, feature_subset, split_s
     from sklearn.model_selection import train_test_split
     from sklearn.preprocessing import StandardScaler
 
-    X = feature_selection(selected_channels=selected_channels, feature_subset = feature_subset) # select every feature
+    X = feature_selection(selected_channels=selected_channels, feature_subset = feature_subset)
     y = selected_labels
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = split_size, random_state = seed)
@@ -132,15 +157,13 @@ def downsampling(df, sr=0.5):
     ds_df = df.loc[s0.union(s1)]
     return ds_df
 
-def feature_combination(feature_subset, selected_channels, selected_labels, stop_feature, min_n = 1, max_n = 5, ds = False, ds_rate = 1, training=False, pvalue=False):
+def feature_combination(feature_subset, selected_channels, selected_labels, stop_feature, min_n = 1, max_n = 5, training=False, pvalue=False):
     '''
     Go through a feature subset and calculate the combinations of different features on the subsets.
     '''
+    # TODO: stop feature doesn't don anything currently, might add feature slicing or dismiss it entirely.
     filename = 'until' + stop_feature + '_' + str(min_n) + 'to' + str(max_n) + '.txt'
     file = open(filename, 'w')
-    # apply downsampling
-    if ds:
-
     # selected channels and labels are global now, might fix it if we decide settling on this method.
     for i in range(min_n, max_n):
         for comb in list(itertools.combinations(feature_subset, i)):
@@ -159,6 +182,7 @@ def feature_combination(feature_subset, selected_channels, selected_labels, stop
 # P-Value Thresholding for Feature Selection
 def p_value_thresholding(selected_features, selected_labels):
 
+    # TODO: fix the formatting for this
     p_values = []
 
     X_p = selected_features
