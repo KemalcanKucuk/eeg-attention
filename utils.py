@@ -41,8 +41,6 @@ def feature_selection(selected_channels, feature_subset):
     selected_features = pd.DataFrame()
     for feature in feature_subset:
         selected_features[feature] = selected_channels[feature]
-    # temporary sanity check, will delete
-    # print(selected_features.head())
     return selected_features
 
 def data_preparation(selected_channels, selected_labels, feature_subset, split_size = 0.2, seed = 1):
@@ -134,12 +132,15 @@ def downsampling(df, sr=0.5):
     ds_df = df.loc[s0.union(s1)]
     return ds_df
 
-def feature_combination(feature_subset, selected_channels, selected_labels, stop_feature, min_n = 1, max_n = 5, training=False, pvalue=False):
+def feature_combination(feature_subset, selected_channels, selected_labels, stop_feature, min_n = 1, max_n = 5, ds = False, ds_rate = 1, training=False, pvalue=False):
     '''
     Go through a feature subset and calculate the combinations of different features on the subsets.
     '''
     filename = 'until' + stop_feature + '_' + str(min_n) + 'to' + str(max_n) + '.txt'
     file = open(filename, 'w')
+    # apply downsampling
+    if ds:
+
     # selected channels and labels are global now, might fix it if we decide settling on this method.
     for i in range(min_n, max_n):
         for comb in list(itertools.combinations(feature_subset, i)):
