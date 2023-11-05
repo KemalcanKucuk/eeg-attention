@@ -94,23 +94,21 @@ def feature_selection(dataset, feature_subset):
     return selected_features
 
 
-def incremental_training(dataset, channel_list, feature_subset, models, mode='feature', save=False):
+def incremental_training(dataset, channel_list, feature_subset, models, mode='feature', figure=False, save=False):
     '''
     Incrementally train channels or features to see individual performances
     '''
     # TODO: discuss whether to implement a plateau threshold
-    # bu calisirsa direkt itere edilecek listeyi degistirecek sekile sok
     from tqdm import tqdm 
-
-    inc_var = mode
-
 
     if mode == 'feature':
         iterable = feature_subset
         filename = 'outs/feat_inc.csv'
+        figname = 'outs/feat_fig.png'
     elif mode == 'channel':
         iterable = channel_list
         filename = 'outs/chnl_inc.csv'
+        figname = 'outs/chnl_fig.png'
     
     incrementation = []
     results = {}
@@ -135,6 +133,21 @@ def incremental_training(dataset, channel_list, feature_subset, models, mode='fe
                     }, 
                     axis=0)                
     results_df.columns = ['test_accuracy']
+    if figure:
+        import matplotlib.pyplot as plt
+        # this model accuracy dictionary can be extended for further applications
+        model_accs = {model: [] for model in models}
+        for i in range(len(results_df)):
+            model_accs[models[i%len(models)]].append(results_df.iloc[i].iloc[0])
+        # take an arbitrary accuracy list for the x-axis
+        for key in model_accs:
+            x = np.linspace(1,len(model_accs[key]), len(model_accs[key]))
+            plt.plot(x, model_accs[key])
+        plt.grid()
+        plt.legend(models)
+        if save:
+            plt.savefig(figname, bbox_inches='tight', dpi=300)
+        plt.show()
     if save:
         results_df.to_csv(filename)
 
