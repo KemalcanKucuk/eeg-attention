@@ -25,7 +25,7 @@ import selection
 
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
-def data_preparation(dataset, feature_subset, split_size=0.2, seed=447):
+def data_preparation(dataset, feature_subset, split_size=0.2):
 
     from sklearn.model_selection import train_test_split
     from sklearn.preprocessing import StandardScaler
@@ -37,7 +37,7 @@ def data_preparation(dataset, feature_subset, split_size=0.2, seed=447):
     y = labels
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=split_size, random_state=seed)
+        X, y, test_size=split_size)
 
     # apply normalization after splitting to avoid leakage
     scaler = StandardScaler()
@@ -54,7 +54,7 @@ def model_training(data, model_family, verbose=True, stats=False, cm=False):
     # display_labels = ['drowsy' if label == 1 else 'alert' for label in labels['label'].unique()]
     display_labels = ['drowsy', 'alert']
     if model_family == 'K-NN':
-        model = KNeighborsClassifier()
+        model = KNeighborsClassifier(n_neighbors=247)
     elif model_family == 'DTC':
         model = DecisionTreeClassifier()
     elif model_family == 'RFC':
