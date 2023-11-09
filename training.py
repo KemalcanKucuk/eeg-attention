@@ -25,24 +25,33 @@ import selection
 
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
-def data_preparation(dataset, feature_subset, split_size=0.2):
+
+def data_preparation(dataset, feature_subset, split_size=0.2, pca=False, seed=447):
 
     from sklearn.model_selection import train_test_split
     from sklearn.preprocessing import StandardScaler
 
     X = utils.feature_selection(dataset=dataset,
-                          feature_subset=feature_subset)
+                                feature_subset=feature_subset)
 
     labels = dataset.iloc[:, -1:]
     y = labels
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=split_size)
+        X, y, test_size=split_size, random_state=seed)
 
     # apply normalization after splitting to avoid leakage
     scaler = StandardScaler()
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
+
+    if pca:
+        from sklearn.decomposition import PCA
+        from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+        pca = PCA(n_components = 0.999)
+        X_train = pca.fit_transform(X_train)
+        X_test = pca.transform(X_test)
 
     return [X_train, X_test, y_train, y_test]
 
@@ -54,16 +63,17 @@ def model_training(data, model_family, verbose=True, stats=False, cm=False):
     # display_labels = ['drowsy' if label == 1 else 'alert' for label in labels['label'].unique()]
     display_labels = ['drowsy', 'alert']
     if model_family == 'K-NN':
-        model = KNeighborsClassifier(n_neighbors=247)
+        model = KNeighborsClassifier(n_neighbors=5)
+
     elif model_family == 'DTC':
-        model = DecisionTreeClassifier()
+        model = DecisionTreeClassifier(max_depth=7)
     elif model_family == 'RFC':
         model = RandomForestClassifier(n_estimators=100)
     elif model_family == 'Logistic Regression':
         model = LogisticRegression(max_iter=5000)
     elif model_family == 'SVM':
-        model = SVC(C=1.0, kernel='rbf', degree=10, gamma='scale', coef0=0.0, shrinking=True, probability=False, tol=0.001,
-                    cache_size=200, class_weight=None, verbose=False, max_iter=-1, decision_function_shape='ovr', break_ties=False, random_state=1)
+        model = SVC(C=10.0, kernel='rbf', gamma=0.1, random_state=1)
+        #model = SVC(C=1.0, kernel='rbf', degree=10, gamma='scale', coef0=0.0, shrinking=True, probability=False, tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1, decision_function_shape='ovr', break_ties=False, random_state=1)
     elif model_family == 'NN':
         model = MLPClassifier(activation='relu', solver='adam', alpha=1e-2, learning_rate='adaptive',
                               max_iter=1000000, hidden_layer_sizes=(60, 2), random_state=1)
