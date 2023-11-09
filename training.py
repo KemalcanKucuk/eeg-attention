@@ -64,7 +64,6 @@ def model_training(data, model_family, verbose=True, stats=False, cm=False):
     display_labels = ['drowsy', 'alert']
     if model_family == 'K-NN':
         model = KNeighborsClassifier(n_neighbors=5)
-
     elif model_family == 'DTC':
         model = DecisionTreeClassifier(max_depth=7)
     elif model_family == 'RFC':
