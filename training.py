@@ -63,7 +63,7 @@ def model_training(data, model_family, verbose=True, stats=False, cm=False):
     # display_labels = ['drowsy' if label == 1 else 'alert' for label in labels['label'].unique()]
     display_labels = ['drowsy', 'alert']
     if model_family == 'K-NN':
-        model = KNeighborsClassifier(n_neighbors=5)
+        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= 247, p= 1)
     elif model_family == 'DTC':
         model = DecisionTreeClassifier(max_depth=7)
     elif model_family == 'RFC':
