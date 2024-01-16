@@ -34,6 +34,7 @@ def data_preparation(dataset, feature_subset, split_size=0.2, pca=False, seed=44
     X = utils.feature_selection(dataset=dataset,
                                 feature_subset=feature_subset)
 
+    # TODO: bu ne ya
     labels = dataset.iloc[:, -1:]
     y = labels
 
@@ -56,14 +57,21 @@ def data_preparation(dataset, feature_subset, split_size=0.2, pca=False, seed=44
     return [X_train, X_test, y_train, y_test]
 
 
-def model_training(data, model_family, verbose=True, stats=False, cm=False):
+def model_training(data, model_family, stats=False, cm=False):
 
     X_train, X_test, y_train, y_test = data
     # TODO: burada bi seyleri karistirdim bu kisim bi kontrol edilsin
     # display_labels = ['drowsy' if label == 1 else 'alert' for label in labels['label'].unique()]
     display_labels = ['drowsy', 'alert']
+    
     if model_family == 'K-NN':
-        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= 247, p= 1)
+        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= int(np.sqrt(np.prod(data[0].shape))), p= 1)
+    elif model_family == 'K-NN1':
+        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= 1, p= 1)
+    elif model_family == 'K-NN2':
+        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= 2, p= 1)
+    elif model_family == 'K-NN3':
+        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= 3, p= 1)
     elif model_family == 'DTC':
         model = DecisionTreeClassifier(max_depth=7)
     elif model_family == 'RFC':
@@ -79,37 +87,32 @@ def model_training(data, model_family, verbose=True, stats=False, cm=False):
     elif model_family == 'GBC':
         model = GradientBoostingClassifier(
             loss='log_loss', n_estimators=300, learning_rate=0.1, max_depth=10, random_state=1)
+    
 
     model.fit(X_train, y_train)
-    training_acc = model.score(X_train, y_train)
-    test_acc = model.score(X_test, y_test)
-    if verbose:
-        print('Accuracy of {} classifier on training set: {:.8f}'
-              .format(model_family, training_acc))
-        print('Accuracy of {} classifier on test set: {:.8f}'
-              .format(model_family, test_acc))
+    stats_dict = {}
+
+    stats_dict['training_acc'] = model.score(X_train, y_train)
+    stats_dict['test_acc'] = model.score(X_test, y_test)
+
+    stats_dict['sensitivity'] = recall_score(y_test, model.predict(X_test))
+    stats_dict['precision'] = precision_score(y_test, model.predict(X_test))
+    stats_dict['f1'] = f1_score(y_test, model.predict(X_test))
+
+    fpr, tpr, thresholds = roc_curve(y_test, model.predict(X_test))
+    stats_dict['auc'] = roc_auc_score(y_test, model.predict(X_test))
+    stats_dict['logloss'] = log_loss(y_test, model.predict(X_test))
 
     if stats:
         print()
-        print("==== Stats for the {} model ====".format(model_family))
-        sensitivity = recall_score(y_test, model.predict(X_test))
-        print("Sensitivity (Recall):", sensitivity)
-
-        precision = precision_score(y_test, model.predict(X_test))
-        print("Precision:", precision)
-
-        accuracy = accuracy_score(y_test, model.predict(X_test))
-        print("Accuracy (Recall):", accuracy)
-
-        f1 = f1_score(y_test, model.predict(X_test))
-        print("F1_score:", f1)
-
-        fpr, tpr, thresholds = roc_curve(y_test, model.predict(X_test))
-        auc = roc_auc_score(y_test, model.predict(X_test))
-        print("AUC:", auc)
-
-        logloss = log_loss(y_test, model.predict(X_test))
-        print("Logloss:", logloss)
+        print("==== Stats_dict for the {} model ====".format(model_family))
+        print('Training Accuracy: ', stats_dict['training_acc'])
+        print('Test Accuracy: ', stats_dict['test_acc'])
+        print("Sensitivity (Recall):", stats_dict['sensitivity'])
+        print("Precision:", stats_dict['precision'])
+        print("F1_score:", stats_dict['f1'])
+        print("AUC:", stats_dict['auc'])    
+        print("Logloss:", stats_dict['logloss'])
         print()
 
     if cm:
@@ -118,4 +121,4 @@ def model_training(data, model_family, verbose=True, stats=False, cm=False):
             confusion_matrix=model_cm, display_labels=display_labels)
         model_disp.plot()
 
-    return [training_acc, test_acc]
+    return stats_dict

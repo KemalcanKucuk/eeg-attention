@@ -43,10 +43,6 @@ def data_loader(path, ds=False, ds_rate=1):
     if ds:
         df = downsampling(df, sr=ds_rate)
 
-    # we might delete this condition but i'll leave it be
-    # in case we try it on multiple datasets
-    # if csv_path == 'eeg_features.csv':
-
     df = df.drop('Unnamed: 0', axis=1)
 
     return df
@@ -131,7 +127,7 @@ def incremental_training(dataset, channel_list, feature_subset, models, mode='fe
     results_df = pd.concat({
                         k: pd.DataFrame.from_dict(v, 'index') for k, v in results.items()
                     }, 
-                    axis=0)                
+                    axis=0)
     results_df.columns = ['test_accuracy']
     if figure:
         import matplotlib.pyplot as plt
@@ -167,8 +163,11 @@ def downsampling(df, sr=0.5):
     ds_df = df.loc[s0.union(s1)]
     return ds_df
 
+def extract_stats():
+    pass
 
-    '''
+
+'''
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
