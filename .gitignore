@@ -2,3 +2,38 @@
 drowsiness-dataset.mat
 .gitignore
 eeg_features.csv
+indv_channel_perfs.csv
+sorted_indv_channel_perfs.csv
+archive/['spc_cnt', 'spc_roff', 'slope', 'mfcc_0', 'mfcc_1', 'mfcc_2', 'mfcc_3']_2to5.txt
+archive/['spc_cnt', 'spc_roff', 'slope']_1to2.txt
+archive/0.25 threshold using sklearn.csv
+archive/archive.csv
+archive/butun featurelarin variancelari.rtf
+archive/finds_test_acc>=0.75.csv
+archive/finds_thr-0.75_ds-0.02.csv
+archive/finds_thr-0.75_ds-0.03.csv
+archive/finds_thr-0.75_ds-0.04.csv
+archive/finds_thr-0.75_ds-0.05.csv
+archive/test_acc>=0.75.csv
+archive/thr-0.75_ds-0.02.csv
+archive/thr-0.75_ds-0.03.csv
+archive/thr-0.75_ds-0.04.csv
+archive/thr-0.75_ds-0.05.csv
+archive/untilmel_7_4to5.txt
+archive/untilpeak_freq_1to5.txt
+outs/chnl_fig.png
+outs/chnl_inc.csv
+outs/feat_fig.png
+outs/feat_inc.csv
+outs/gamma_beta and dfa class scatter.png
+outs/gamma_beta and gamma_alpha class scatter.png
+outs/gamma_beta and kurtosis class scatter.png
+outs/mel_11 and beta_delta class scatter.png
+outs/mel_11 and complexity class scatter.png
+outs/mfcc_0 and mel_11 class scatter.png
+outs/mfcc_0 and slope class scatter.png
+outs/model accuracy comparison.png
+outs/p_values_by_channels.csv
+extraction.ipynb.orig
+archive/['spc_cnt', 'spc_roff', 'slope']_1to2.txt
+archive/['spc_cnt', 'spc_roff', 'slope', 'mfcc_0', 'mfcc_1', 'mfcc_2', 'mfcc_3']_2to5.txt
