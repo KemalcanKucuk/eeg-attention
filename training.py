@@ -57,6 +57,33 @@ def data_preparation(dataset, feature_subset, split_size=0.2, pca=False, seed=44
     return [X_train, X_test, y_train, y_test]
 
 
+def model_switch(model_family):
+    if model_family == 'K-NN':
+        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= int(np.sqrt(np.prod(data[0].shape))), p= 1)
+    elif model_family == 'K-NN1':
+        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= 1, p= 1)
+    elif model_family == 'K-NN2':
+        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= 2, p= 1)
+    elif model_family == 'K-NN3':
+        model = KNeighborsClassifier(leaf_size= 10, n_neighbors= 3, p= 1)
+    elif model_family == 'DTC':
+        model = DecisionTreeClassifier(max_depth=7)
+    elif model_family == 'RFC':
+        model = RandomForestClassifier(n_estimators=100)
+    elif model_family == 'Logistic Regression':
+        model = LogisticRegression(max_iter=5000)
+    elif model_family == 'SVM':
+        model = SVC(C=10.0, kernel='rbf', gamma=0.1, random_state=1)
+        #model = SVC(C=1.0, kernel='rbf', degree=10, gamma='scale', coef0=0.0, shrinking=True, probability=False, tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1, decision_function_shape='ovr', break_ties=False, random_state=1)
+    elif model_family == 'NN':
+        model = MLPClassifier(activation='relu', solver='adam', alpha=1e-2, learning_rate='adaptive',
+                              max_iter=1000000, hidden_layer_sizes=(60, 2), random_state=1)
+    elif model_family == 'GBC':
+        model = GradientBoostingClassifier(
+            loss='log_loss', n_estimators=300, learning_rate=0.1, max_depth=10, random_state=1)
+    return model
+
+
 def model_training(data, model_family, stats=False, cm=False):
 
     X_train, X_test, y_train, y_test = data
