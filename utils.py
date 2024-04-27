@@ -79,7 +79,6 @@ def feature_selection(dataset, feature_subset):
 
     Arguments:
     dataset -- Reduced dataset with selected channels, output of the channel_selection
-    # might rename dataset
     feature_subset -- List of features to be extracted from the dataset 
 
     return -- The reduced dataset with selected features (no labels)
@@ -94,8 +93,6 @@ def incremental_training(dataset, channel_list, feature_subset, models, mode='fe
     '''
     Incrementally train channels or features to see individual performances
     '''
-    # TODO: discuss whether to implement a plateau threshold
-    from tqdm import tqdm 
 
     if mode == 'feature':
         iterable = feature_subset
@@ -162,22 +159,3 @@ def downsampling(df, sr=0.5):
         int(ds_sample_n/2), random_state=447).index
     ds_df = df.loc[s0.union(s1)]
     return ds_df
-
-def extract_stats():
-    pass
-
-
-'''
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-
-#y = y.reset_index(drop=True)
-
-pca = PCA(n_components = 0.999)
-X_train = pca.fit_transform(X_train)
-X_test = pca.transform(X_test)
-#X = dataPCA
-variance = pd.DataFrame(pca.explained_variance_ratio_)
-print(pca.explained_variance_ratio_)
-print(np.sum(pca.explained_variance_ratio_))
-'''

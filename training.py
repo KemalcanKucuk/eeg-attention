@@ -27,16 +27,23 @@ warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
 
 def data_preparation(dataset, feature_subset, split_size=0.2, pca=False, seed=447):
+    '''
+    TODO: 
+    Select the desired channels from the total feature dataset
 
+    Arguments:
+    dataset_df -- Output of the data_loader()
+    channel_list -- List of channels to be extracted from the dataset
+
+    return -- The reduced dataset with selected channels
+    '''
     from sklearn.model_selection import train_test_split
     from sklearn.preprocessing import StandardScaler
 
     X = utils.feature_selection(dataset=dataset,
                                 feature_subset=feature_subset)
 
-    # TODO: bu ne ya
-    labels = dataset.iloc[:, -1:]
-    y = labels
+    y = dataset.iloc[:, -1:]
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=split_size, random_state=seed)
@@ -56,8 +63,18 @@ def data_preparation(dataset, feature_subset, split_size=0.2, pca=False, seed=44
 
     return [X_train, X_test, y_train, y_test]
 
-
 def model_switch(model_family):
+    '''
+    TODO: 
+    Select the desired channels from the total feature dataset
+
+    Arguments:
+    dataset_df -- Output of the data_loader()
+    channel_list -- List of channels to be extracted from the dataset
+
+    return -- The reduced dataset with selected channels
+    '''
+    model = ''
     if model_family == 'K-NN':
         model = KNeighborsClassifier(leaf_size= 10, n_neighbors= int(np.sqrt(np.prod(data[0].shape))), p= 1)
     elif model_family == 'K-NN1':
@@ -83,14 +100,21 @@ def model_switch(model_family):
             loss='log_loss', n_estimators=300, learning_rate=0.1, max_depth=10, random_state=1)
     return model
 
+def model_training(data, model_family, stats=False, obs_df=False, cm=False):
+    '''
+    TODO: 
+    Select the desired channels from the total feature dataset
 
-def model_training(data, model_family, stats=False, cm=False):
+    Arguments:
+    dataset_df -- Output of the data_loader()
+    channel_list -- List of channels to be extracted from the dataset
 
+    return -- The reduced dataset with selected channels
+    '''
     X_train, X_test, y_train, y_test = data
-    # TODO: burada bi seyleri karistirdim bu kisim bi kontrol edilsin
     # display_labels = ['drowsy' if label == 1 else 'alert' for label in labels['label'].unique()]
     display_labels = ['drowsy', 'alert']
-    
+    #model = model_switch(model_family)
     if model_family == 'K-NN':
         model = KNeighborsClassifier(leaf_size= 10, n_neighbors= int(np.sqrt(np.prod(data[0].shape))), p= 1)
     elif model_family == 'K-NN1':
@@ -114,8 +138,6 @@ def model_training(data, model_family, stats=False, cm=False):
     elif model_family == 'GBC':
         model = GradientBoostingClassifier(
             loss='log_loss', n_estimators=300, learning_rate=0.1, max_depth=10, random_state=1)
-    
-
     model.fit(X_train, y_train)
     stats_dict = {}
 
@@ -149,3 +171,4 @@ def model_training(data, model_family, stats=False, cm=False):
         model_disp.plot()
 
     return stats_dict
+
