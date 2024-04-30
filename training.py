@@ -151,6 +151,9 @@ def model_training(data, model_family, stats=False, obs_df=False, cm=False):
     fpr, tpr, thresholds = roc_curve(y_test, model.predict(X_test))
     stats_dict['auc'] = roc_auc_score(y_test, model.predict(X_test))
     stats_dict['logloss'] = log_loss(y_test, model.predict(X_test))
+    stats_dict['predictions'] = model.predict(X_test)
+
+
 
     if stats:
         print()
@@ -169,6 +172,7 @@ def model_training(data, model_family, stats=False, obs_df=False, cm=False):
         model_disp = ConfusionMatrixDisplay(
             confusion_matrix=model_cm, display_labels=display_labels)
         model_disp.plot()
+    
 
     return stats_dict
 
