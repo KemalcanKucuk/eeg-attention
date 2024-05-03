@@ -25,7 +25,6 @@ from selection import *
 
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
-
 def data_loader(path, ds=False, ds_rate=1):
     '''
     Load the data and apply the necessary transformations, downsample if necessary.
@@ -115,8 +114,8 @@ def incremental_training(dataset, channel_list, feature_subset, models, mode='fe
             data = data_preparation(dataset=reduced_dataset,  feature_subset=incrementation)
         model_acc = {}
         for model in models:
-            training, test = model_training(data, model, stats=False, cm=False, verbose=False)
-            model_acc[model] = test
+            model_result = model_training(data, model, stats=False, cm=False)
+            model_acc[model] = model_result['test_acc']
             # for better readiability of the csv
             # results[str(len(incrementation))] = model_acc
             results[str(incrementation)] = model_acc

@@ -19,13 +19,13 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 import itertools
-
+from tqdm import tqdm
 import utils
 
 
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
 
-def feature_combination(feature_subset, dataset, models=['K-NN', 'SVM', 'DTC'], training=False, min_n=1, max_n=5):
+def feature_combination(feature_subset, dataset, models, training=False, min_n=1, max_n=5):
     '''
     Go through a feature subset and calculate the combinations of different features on the subsets.
     '''
@@ -74,8 +74,7 @@ def p_value_thresholding(dataset, feature_subset, verbose=False):
     # y_p = pd.Series(y['0'])
     sorted_dict = {}
     for feature in X_p.columns:
-        t_stat, p_value = stats.ttest_ind(
-            X_p[feature][y_p == 0], X_p[feature][y_p == 1])
+        t_stat, p_value = stats.ttest_ind(X_p[feature][y_p == 0], X_p[feature][y_p == 1])
         p_values.append(p_value)
         sorted_dict[feature] = p_value
 
