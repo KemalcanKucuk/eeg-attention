@@ -1,10 +1,7 @@
 .DS_Store
-drowsiness-dataset.mat
 .gitignore
-eeg_features.csv
-indv_channel_perfs.csv
-sorted_indv_channel_perfs.csv
-extraction.ipynb.orig
-archive/
-outs/
 paws/
+outs/
+archive/
+eeg_features.csv
+drowsiness-dataset.mat
