@@ -6,6 +6,7 @@ import scipy.stats as stats
 import sklearn as sk
 import xgboost as xgb
 from scipy import stats
+from scipy.stats import ttest_ind
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 from sklearn.exceptions import DataConversionWarning
 from sklearn.linear_model import Lasso, LogisticRegression
@@ -152,6 +153,9 @@ def model_training(data, model_family, stats=False, obs_df=False, cm=False):
     stats_dict['auc'] = roc_auc_score(y_test, model.predict(X_test))
     stats_dict['logloss'] = log_loss(y_test, model.predict(X_test))
     stats_dict['predictions'] = model.predict(X_test)
+    t_stat, p_value = ttest_ind(model.predict(X_test), y_test)
+    stats_dict['t_score'] = t_stat
+    stats_dict['p_value'] = p_value
 
 
 
