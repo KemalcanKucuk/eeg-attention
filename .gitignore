@@ -2,6 +2,7 @@
 .gitignore
 paws/
 outs/
+data/
 archive/
 eeg_features.csv
 drowsiness-dataset.mat

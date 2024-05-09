@@ -139,6 +139,8 @@ def incremental_training(dataset, channel_list, feature_subset, models, mode='fe
         plt.legend(models)
         if save:
             plt.savefig(figname, bbox_inches='tight', dpi=300)
+            # also save to a csv for plotting somewhere else
+            
         plt.show()
     if save:
         results_df.to_csv(filename)
