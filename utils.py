@@ -5,6 +5,7 @@ import pandas as pd
 import scipy.stats as stats
 import sklearn as sk
 import xgboost as xgb
+import matplotlib.pyplot as plt
 from scipy import stats
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
 from sklearn.exceptions import DataConversionWarning
@@ -24,6 +25,7 @@ from training import *
 from selection import *
 
 warnings.filterwarnings(action='ignore', category=DataConversionWarning)
+plt.rcParams["font.family"] = "Times New Roman"
 
 def data_loader(path, ds=False, ds_rate=1):
     '''
@@ -96,11 +98,11 @@ def incremental_training(dataset, channel_list, feature_subset, models, mode='fe
     if mode == 'feature':
         iterable = feature_subset
         filename = 'outs/feat_inc.csv'
-        figname = 'outs/feat_fig.png'
+        figname = 'outs/feat_fig.pdf'
     elif mode == 'channel':
         iterable = channel_list
         filename = 'outs/chnl_inc.csv'
-        figname = 'outs/chnl_fig.png'
+        figname = 'outs/chnl_fig.pdf'
     
     incrementation = []
     results = {}
@@ -126,7 +128,6 @@ def incremental_training(dataset, channel_list, feature_subset, models, mode='fe
                     axis=0)
     results_df.columns = ['test_accuracy']
     if figure:
-        import matplotlib.pyplot as plt
         # this model accuracy dictionary can be extended for further applications
         model_accs = {model: [] for model in models}
         for i in range(len(results_df)):
@@ -137,6 +138,11 @@ def incremental_training(dataset, channel_list, feature_subset, models, mode='fe
             plt.plot(x, model_accs[key])
         plt.grid()
         plt.legend(models)
+        plt.ylabel("Test Accuracy")
+        if mode == 'channel':
+            plt.xlabel("Channel Count")
+        if mode == 'feature':
+            plt.xlabel("Feature Count")
         if save:
             plt.savefig(figname, bbox_inches='tight', dpi=300)
             # also save to a csv for plotting somewhere else

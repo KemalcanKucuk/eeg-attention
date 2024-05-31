@@ -110,7 +110,7 @@ def model_training(data, model_family, stats=False, cm=False):
     X_train, X_test, y_train, y_test = data
     # display_labels = ['drowsy' if label == 1 else 'alert' for label in labels['label'].unique()]
     display_labels = ['drowsy', 'alert']
-    model = model_switch(model_family)
+   #model = model_switch(model_family)
     if model_family == 'K-NN':
         model = KNeighborsClassifier(leaf_size= 10, n_neighbors= int(np.sqrt(np.prod(data[0].shape))), p= 1)
     elif model_family == 'DTC':
@@ -121,10 +121,14 @@ def model_training(data, model_family, stats=False, cm=False):
         model = LogisticRegression(max_iter=5000)
     elif model_family == 'SVM':
         model = SVC(C=10.0, kernel='rbf', gamma=0.1, random_state=1)
+    elif model_family == 'SVM-def':
+        model = SVC()
         #model = SVC(C=1.0, kernel='rbf', degree=10, gamma='scale', coef0=0.0, shrinking=True, probability=False, tol=0.001, cache_size=200, class_weight=None, verbose=False, max_iter=-1, decision_function_shape='ovr', break_ties=False, random_state=1)
     elif model_family == 'NN':
         model = MLPClassifier(activation='relu', solver='adam', alpha=1e-2, learning_rate='adaptive',
                               max_iter=1000000, hidden_layer_sizes=(60, 2), random_state=1)
+    elif model_family == 'NN-def':
+        model = MLPClassifier()
     elif model_family == 'XGB':
         model = GradientBoostingClassifier(
             loss='log_loss', n_estimators=300, learning_rate=0.1, max_depth=10, random_state=1)
@@ -141,7 +145,7 @@ def model_training(data, model_family, stats=False, cm=False):
     fpr, tpr, thresholds = roc_curve(y_test, model.predict(X_test))
     stats_dict['auc'] = roc_auc_score(y_test, model.predict(X_test))
     stats_dict['logloss'] = log_loss(y_test, model.predict(X_test))
-    stats_dict['predictions'] = model.predict(X_test)
+   #stats_dict['predictions'] = model.predict(X_test)
     t_stat, p_value = ttest_ind(model.predict(X_test), y_test)
     stats_dict['t_score'] = t_stat
     stats_dict['p_value'] = p_value

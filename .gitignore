@@ -6,3 +6,5 @@ data/
 archive/
 eeg_features.csv
 drowsiness-dataset.mat
+allahbizikurtarsin.ipynb
+librosa-ex.ipynb
